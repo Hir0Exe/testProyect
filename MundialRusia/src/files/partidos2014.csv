@@ -1,0 +1,49 @@
+Grupo,Local,Visitante,Continente Local,Continente Visitante,Goles Local,Goles Visitante
+A,Brasil,Croacia,Sudamérica,Europa,3,1
+A,México,Camerún,Norteamérica,África,1,0
+A,Brasil,México,Sudamérica,Norteamérica,0,0
+A,Camerún,Croacia,África,Europa,0,4
+A,Camerún,Brasil,África,Sudamérica,1,4
+A,Croacia,México,Europa,Norteamérica,1,3
+B,España,Holanda,Europa,Europa,1,5
+B,Chile,Australia,Sudamérica,Oceanía,3,1
+B,Australia,Holanda,Oceanía,Europa,2,3
+B,España,Chile,Europa,Sudamérica,0,2
+B,Australia,España,Oceanía,Europa,0,3
+B,Holanda,Chile,Europa,Sudamérica,2,0
+C,Colombia,Grecia,Sudamérica,Europa,3,0
+C,Costa de Marfil,Japón,África,Asia,2,1
+C,Colombia,Costa de Marfil,Sudamérica,África,2,1
+C,Japón,Grecia,Asia,Europa,0,0
+C,Japón,Colombia,Asia,Sudamérica,1,4
+C,Grecia,Costa de Marfil,Europa,África,2,1
+D,Uruguay,Costa Rica,Sudamérica,Norteamérica,1,3
+D,Inglaterra,Italia,Europa,Europa,1,2
+D,Uruguay,Inglaterra,Sudamérica,Europa,2,1
+D,Italia,Costa Rica,Europa,Norteamérica,0,1
+D,Italia,Uruguay,Europa,Sudamérica,0,1
+D,Costa Rica,Inglaterra,Norteamérica,Europa,0,0
+E,Suiza,Ecuador,Europa,Sudamérica,2,1
+E,Francia,Honduras,Europa,Norteamérica,3,0
+E,Suiza,Francia,Europa,Europa,2,5
+E,Honduras,Ecuador,Norteamérica,Sudamérica,1,2
+E,Honduras,Suiza,Norteamérica,Europa,0,3
+E,Ecuador,Francia,Sudamérica,Europa,0,0
+F,Argentina,Bosnia y Herzegovina,América del Sur,Europa,2,1
+F,Irán,Nigeria,Asia,África,0,0
+F,Argentina,Irán,América del Sur,Asia,1,0
+F,Nigeria,Bosnia y Herzegovina,África,Europa,1,0
+F,Nigeria,Argentina,África,América del Sur,2,3
+F,Bosnia y Herzegovina,Irán,Europa,Asia,3,1
+G,Alemania,Portugal,Europa,Europa,4,0
+G,Ghana,Estados Unidos,África,Norteamérica,1,2
+G,Alemania,Ghana,Europa,África,2,2
+G,Estados Unidos,Portugal,Norteamérica,Europa,2,2
+G,Estados Unidos,Alemania,Norteamérica,Europa,0,1
+G,Portugal,Ghana,Europa,África,2,1
+H,Bélgica,Argelia,Europa,África,2,1
+H,Rusia,Corea del Sur,Europa,Asia,1,1
+H,Bélgica,Rusia,Europa,Europa,1,0
+H,Corea del Sur,Argelia,Asia,África,2,4
+H,Corea del Sur,Bélgica,Asia,Europa,0,1
+H,Argelia,Rusia,África,Europa,1,1
