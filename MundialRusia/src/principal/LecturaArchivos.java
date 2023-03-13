@@ -41,7 +41,10 @@ public class LecturaArchivos {
         getEquiposPorContinente(rusia2018);
         System.out.println("");
         
+        //No muestra todos los equipos debido a que el archivo equipos.csv está desactualizado.
+        System.out.println("\nMundial     "+brasil2014.getPais()+"\n");
         getEquipoClasificadosPorGrupo(brasil2014);
+        System.out.println("\nMundial     "+rusia2018.getPais()+"\n");
         getEquipoClasificadosPorGrupo(rusia2018);
         
     }
@@ -181,10 +184,11 @@ public class LecturaArchivos {
         String auxString;
         List<Equipo> equipos = mundial.getEquipos();
         List<String> continentes = new ArrayList<>();
+        System.out.println("\nMUNDIAL "+mundial.getPais()+" del año "+mundial.getAño()+"\n");
         for (int i = 0; i < equipos.size(); i++) {
             String continenteTemp = equipos.get(i).getContinente();
             if (!validarRepetido(continentes, continenteTemp)) {
-                auxString = "Equipos del continente de "+continenteTemp+" del mundial "+mundial.getPais()+" del año "+mundial.getAño();
+                auxString = "Equipos del continente de "+continenteTemp;
                 for (int j = 0; j < equipos.size(); j++) {
                     if (equipos.get(j).getContinente().equals(continenteTemp)) {
                         auxString += "\n    "+equipos.get(j).toString();
@@ -214,7 +218,7 @@ public class LecturaArchivos {
     List<Equipo> equipos = mundial.getEquipos();
     List<String> gruposTemp = new ArrayList<>();
     List<String> equiposTemp = new ArrayList<>();
-    String auxString;
+    String auxString = null;
         for (int i = 0; i < partidos.size(); i++) {
             String grupoTemp = partidos.get(i).getGrupo();
             if (!validarRepetido(gruposTemp, grupoTemp)) {
@@ -224,7 +228,7 @@ public class LecturaArchivos {
                     if (partidos.get(j).getGrupo().equals(grupoTemp) && !validarRepetido(equiposTemp, equipoTemp)) {
                         for (int k = 0; k < partidos.size(); k++) {
                             if (partidos.get(k).getEquipoLocal().equals(equipoTemp)) {
-                                golesTemp += golesTemp += (partidos.get(j).getGolesLocal() - partidos.get(j).getGolesVisitante());
+                                golesTemp += (partidos.get(j).getGolesLocal() - partidos.get(j).getGolesVisitante());
                             }
                             if (partidos.get(k).getEquipoVisitante().equals(equipoTemp)) {
                                 golesTemp += (partidos.get(j).getGolesVisitante() - partidos.get(j).getGolesLocal());
@@ -234,16 +238,17 @@ public class LecturaArchivos {
                             if (equipos.get(k).getEquipo().equals(equipoTemp)) {
                                 equipos.get(k).setGrupo(grupoTemp);
                                 equipos.get(k).setPuntos(golesTemp);
+                                equiposTemp.add(equipoTemp);
+                                break;
                             }
                         }
-                        equiposTemp.add(equipoTemp);
                     }
                     equipoTemp = partidos.get(j).getEquipoVisitante();
                     golesTemp = 0;
                     if (partidos.get(j).getGrupo().equals(grupoTemp) && !validarRepetido(equiposTemp, equipoTemp)) {
                         for (int k = 0; k < partidos.size(); k++) {
                             if (partidos.get(k).getEquipoLocal().equals(equipoTemp)) {
-                                golesTemp += golesTemp += (partidos.get(j).getGolesLocal() - partidos.get(j).getGolesVisitante());
+                                golesTemp += (partidos.get(j).getGolesLocal() - partidos.get(j).getGolesVisitante());
                             }
                             if (partidos.get(k).getEquipoVisitante().equals(equipoTemp)) {
                                 golesTemp += (partidos.get(j).getGolesVisitante() - partidos.get(j).getGolesLocal());
@@ -253,9 +258,10 @@ public class LecturaArchivos {
                             if (equipos.get(k).getEquipo().equals(equipoTemp)) {
                                 equipos.get(k).setGrupo(grupoTemp);
                                 equipos.get(k).setPuntos(golesTemp);
+                                equiposTemp.add(equipoTemp);
+                                break;
                             }
                         }
-                        equiposTemp.add(equipoTemp);
                     }
                 }
                 
@@ -265,36 +271,32 @@ public class LecturaArchivos {
         for (int i = 0; i < gruposTemp.size(); i++) {
             List<Equipo> aux = new ArrayList<>();
             for (int j = 0; j < equipos.size(); j++) {
-                if (gruposTemp.get(i).equals(equipos.get(j).getGrupo())) {
+                if (equipos.get(j).getGrupo() != null && gruposTemp.get(i).equals(equipos.get(j).getGrupo())) {
                     aux.add(equipos.get(j));
                 }
             }
-            
-        }
-        System.out.println("");
-    }
-    
-    private static Mundial calcularPuntos(Mundial mundial) {
-        List<Partido> partidos = mundial.getPartidos();
-        List<Equipo> equipos = mundial.getEquipos();
-        List<String> auxEquipos = new ArrayList<>();
-        
-        for (int i = 0; i < equipos.size(); i++) {
-            int golesTemp = 0;
-            String equipoTemp = equipos.get(i).getEquipo();
-            for (int j = 0; j < partidos.size(); j++) {
-                if (partidos.get(j).getEquipoLocal().equals(equipoTemp)) {
-                    golesTemp += (partidos.get(j).getGolesLocal() - partidos.get(j).getGolesVisitante());
-                }
-                if (partidos.get(j).getEquipoVisitante().equals(equipoTemp)) {
-                    golesTemp += (partidos.get(j).getGolesVisitante() - partidos.get(j).getGolesLocal());
+            Equipo auxTemp;
+            for (int j = 0; j < aux.size() - 1; j++) {
+                for (int d = 0; d < aux.size() - j - 1; d++) {                                                              
+                    if (aux.get(d + 1).getPuntos() > aux.get(d).getPuntos()) {
+                        auxTemp = aux.get(d+1);
+                        aux.set(d+1, aux.get(d));
+                        aux.set(d,auxTemp);
+                    }
                 }
             }
-            equipos.get(i).setPuntos(golesTemp);
+            auxString = "                  GRUPO "+gruposTemp.get(i)+"\n\n";
+            for (int j = 0; j < aux.size(); j++) {
+                if (j == 0) {
+                    auxString += "      CLASIFICADOS\n";
+                }
+                if (j == 2) {
+                    auxString += "      NO CALIFICADOS\n";
+                }
+                auxString += aux.get(j).toString()+", Puntos="+aux.get(j).getPuntos()+"\n";
+            }
+            System.out.println(auxString);
         }
-        mundial.setEquipos(equipos);
-        
-        return mundial;
     }
     
 }
